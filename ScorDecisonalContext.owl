@@ -1,0 +1,325 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY SCORDecisionalContext2 "http://www.owl-ontologies.com/SCORDecisionalContext.owl#" >
+    <!ENTITY SCORDecisionalContext "http://www.semanticweb.org/ontologies/2010/4/28/ScorDecisonalContext.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/ontologies/2010/4/28/ScorDecisonalContext.owl#"
+     xml:base="http://www.owl-ontologies.com/SCORDecisionalContext.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:SCORDecisionalContext="http://www.semanticweb.org/ontologies/2010/4/28/ScorDecisonalContext.owl#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:SCORDecisionalContext2="http://www.owl-ontologies.com/SCORDecisionalContext.owl#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about=""/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasCause -->
+
+    <owl:ObjectProperty rdf:about="#hasCause">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="#CauseEffectRelation"/>
+        <rdfs:range rdf:resource="#CauseIndicator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasConector -->
+
+    <owl:ObjectProperty rdf:about="#hasConector">
+        <rdfs:range rdf:resource="#CauseEffectConector"/>
+        <rdfs:domain rdf:resource="#CauseEffectRelation"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasEffect -->
+
+    <owl:ObjectProperty rdf:about="#hasEffect">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:domain rdf:resource="#CauseEffectRelation"/>
+        <rdfs:range rdf:resource="#EffectIndicator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasManyAlternatives -->
+
+    <owl:ObjectProperty rdf:about="#hasManyAlternatives">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Property that speci&#64257;es that all instances in this
+class must have values only from the speci&#64257;ed range for the speci&#64257;ed
+property</rdfs:comment>
+        <rdfs:domain rdf:resource="#Problem"/>
+        <rdfs:range rdf:resource="#SolutionAlternative"/>
+        <owl:inverseOf rdf:resource="#isSolutionAlternativeOfManyProblem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasNonDesiredEffects -->
+
+    <owl:ObjectProperty rdf:about="#hasNonDesiredEffects">
+        <rdfs:range rdf:resource="#Indicator"/>
+        <rdfs:domain rdf:resource="#Problem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasRootCause -->
+
+    <owl:ObjectProperty rdf:about="#hasRootCause">
+        <rdfs:range rdf:resource="#Indicator"/>
+        <rdfs:domain rdf:resource="#Problem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasSolution -->
+
+    <owl:ObjectProperty rdf:about="#hasSolution">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Problem"/>
+        <rdfs:range rdf:resource="#Solution"/>
+        <owl:inverseOf rdf:resource="#isSolutionOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#isCauseOf -->
+
+    <owl:ObjectProperty rdf:about="#isCauseOf">
+        <rdf:type rdf:resource="&owl;TransitiveProperty"/>
+        <rdfs:domain rdf:resource="#CauseIndicator"/>
+        <rdfs:range rdf:resource="#EffectIndicator"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#isComposedByMany -->
+
+    <owl:ObjectProperty rdf:about="#isComposedByMany">
+        <rdfs:range rdf:resource="#CauseEffectRelation"/>
+        <rdfs:domain rdf:resource="#Problem"/>
+        <owl:inverseOf rdf:resource="#isPlacedInMany"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#isEffectOf -->
+
+    <owl:ObjectProperty rdf:about="#isEffectOf">
+        <rdfs:range rdf:resource="#CauseIndicator"/>
+        <rdfs:domain rdf:resource="#EffectIndicator"/>
+        <owl:inverseOf rdf:resource="#isCauseOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#isPlacedInMany -->
+
+    <owl:ObjectProperty rdf:about="#isPlacedInMany">
+        <rdfs:domain rdf:resource="#CauseEffectRelation"/>
+        <rdfs:range rdf:resource="#Problem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#isSolutionAlternativeOfManyProblem -->
+
+    <owl:ObjectProperty rdf:about="#isSolutionAlternativeOfManyProblem">
+        <rdfs:range rdf:resource="#Problem"/>
+        <rdfs:domain rdf:resource="#SolutionAlternative"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#isSolutionOf -->
+
+    <owl:ObjectProperty rdf:about="#isSolutionOf">
+        <rdf:type rdf:resource="&owl;InverseFunctionalProperty"/>
+        <rdfs:range rdf:resource="#Problem"/>
+        <rdfs:domain rdf:resource="#Solution"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasConectorName -->
+
+    <owl:DatatypeProperty rdf:about="#hasConectorName">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#CauseEffectConector"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasIndicatorName -->
+
+    <owl:DatatypeProperty rdf:about="#hasIndicatorName">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Name of indicator</rdfs:comment>
+        <rdfs:domain rdf:resource="#Indicator"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasProblemGUID -->
+
+    <owl:DatatypeProperty rdf:about="#hasProblemGUID"/>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#hasProblemName -->
+
+    <owl:DatatypeProperty rdf:about="#hasProblemName">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="#Problem"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#CauseEffectConector -->
+
+    <owl:Class rdf:about="#CauseEffectConector">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:disjointWith rdf:resource="#CauseEffectRelation"/>
+        <owl:disjointWith rdf:resource="#GraphFormulation"/>
+        <owl:disjointWith rdf:resource="#Indicator"/>
+        <rdfs:comment
+            >Cause Effect Conector has no value in Problem Formulation and a Value in Solution Alternatives and Solution.</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#CauseEffectRelation -->
+
+    <owl:Class rdf:about="#CauseEffectRelation">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:disjointWith rdf:resource="#GraphFormulation"/>
+        <owl:disjointWith rdf:resource="#Indicator"/>
+        <rdfs:comment
+            >A Cause Effect Relation is any thing that has, amongst other things some Indicator as Cause and some Conector and Some Indicator as Effect</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#CauseIndicator -->
+
+    <owl:Class rdf:about="#CauseIndicator">
+        <rdfs:subClassOf rdf:resource="#Indicator"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#EffectIndicator -->
+
+    <owl:Class rdf:about="#EffectIndicator">
+        <rdfs:subClassOf rdf:resource="#Indicator"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#GraphFormulation -->
+
+    <owl:Class rdf:about="#GraphFormulation">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+        <owl:disjointWith rdf:resource="#Indicator"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#Indicator -->
+
+    <owl:Class rdf:about="#Indicator">
+        <rdfs:subClassOf rdf:resource="&owl;Thing"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#Problem -->
+
+    <owl:Class rdf:about="#Problem">
+        <rdfs:subClassOf rdf:resource="#GraphFormulation"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Represent the formulation of a Problem. Many cause-effect relations.
+Has Many Alternatives. 
+Property that speci&#64257;es that all instances in class Problem must have values only from the speci&#64257;ed range(SolutionAlternative)</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#Solution -->
+
+    <owl:Class rdf:about="#Solution">
+        <rdfs:subClassOf rdf:resource="#SolutionAlternative"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.owl-ontologies.com/SCORDecisionalContext.owl#SolutionAlternative -->
+
+    <owl:Class rdf:about="#SolutionAlternative">
+        <rdfs:subClassOf rdf:resource="#GraphFormulation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<Configuration>
+    <param name="db_server" value="localhost" descripcion="DB Server" ></param>
+    <param name="user" value="postgres" descripcion="Usuario para la conexion" ></param>
+    <param name="pwd" value="postgres" descripcion="pass" ></param>
+    <param name="db_name" value="rdfgraph" descripcion="DB Name" ></param>
+	
+    <param name="scor_onto_file" value="D:/Deutch/development/NewAgora/SCOR.owl" descripcion="SCOR ontology File url" ></param>
+    
+    <param name="port" value="5432" descripcion="Puerto para conectarse al dbserver" ></param>
+    <param name="driver" value="org.postgresql.Driver" descripcion="Driver para conectarse a la base de datos vía jdbc" ></param>
+    <param name="connection_type" value="jdbc:postgresql://" descripcion="tipo de coneccion" ></param>
+    
+    <param name="virtuoso_db_server" value="shadowserver" descripcion="Servidor de base de datos de la aplicacion" ></param>
+    <param name="virtuoso_user" value="dba" descripcion="Usuario para la conexion" ></param>
+    <param name="virtuoso_pwd" value="dba" descripcion="Contraseña" ></param>
+    <param name="virtuoso_db_name" value="rdfgraph" descripcion="Nombre de la base de datos o del servicio" ></param>
+    
+    <param name="virtuoso_port" value="1111" descripcion="Puerto para conectarse al dbserver" ></param>
+    <param name="virtuoso_driver" value="virtuoso.jdbc4.Driver" descripcion="Driver para conectarse a la base de datos vía jdbc" ></param>
+    <param name="virtuoso_connection_type" value="jdbc:virtuoso://" descripcion="tipo de coneccion" ></param>
+
+</Configuration>
+
