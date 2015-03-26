@@ -68,7 +68,7 @@ public class InsertStatements {
 	public void createJenaModel() throws FileNotFoundException {
 //		String location = GraphEd.instalationPath+ "/SCORDecisonalContext.owl";
 //		String location = System.getProperty("user.dir")+ "/main/system/rdf/resources/SCORDecisonalContext.owl";
-		String location = "C:\\Users\\CHUCHI\\Documents\\THESIS\\AGora_2\\main\\system\\rdf\\resources\\SCORDecisonalContext.owl";
+		String location = "D:/Deutch/development/NewAgora/SCORDecisonalContext.owl";
                 model = ModelFactory.createOntologyModel();
 		emptyModel = ModelFactory.createOntologyModel();
 		finalModel = ModelFactory.createOntologyModel();
