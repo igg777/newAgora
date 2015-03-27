@@ -709,7 +709,6 @@ public class GraphEd extends JFrame implements GraphSelectionListener, KeyListen
 	}
 
 	protected void executeSaveRDFToFile() {
-		// TODO Auto-generated method stub
 		if (scenarios.getTabCount() > 0) {
 			JGraph graphToRdf = ((UIModeler) scenarios.getSelectedComponent())
 					.getEditorTabbedPane().getGraphs().get(0);
@@ -736,7 +735,6 @@ public class GraphEd extends JFrame implements GraphSelectionListener, KeyListen
 					} catch (Exception e1) {
 						e1.printStackTrace();
 						errorPane.printMessage(e1);
-
 					}
 				}
 			} else {

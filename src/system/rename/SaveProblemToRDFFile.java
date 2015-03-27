@@ -29,8 +29,8 @@ public class SaveProblemToRDFFile {
 	private String nameSpace = "http://www.owl-ontologies.com/SCORDecisionalContext.owl#";
 	private List<Triplex> triplesToInsert = new ArrayList<Triplex>();
 	private JGraph graph;
-    private String URL;
-    
+	private String URL;
+
 	public SaveProblemToRDFFile(JGraph graph, String URL) {
 		super();
 		this.graph = graph;
@@ -42,14 +42,14 @@ public class SaveProblemToRDFFile {
 	 */
 	public void createJenaModel() throws FileNotFoundException, Exception {
 		try{
-		String location = GraphEd.instalationPath + "/OntologieForSaveToRDF.owl";
-		model = ModelFactory.createOntologyModel();
-		InputStream inSCORDCInstance = FileManager.get().open(location);
-		model.read(inSCORDCInstance, nameSpace);
-		if (model.isEmpty()) {
-			throw new FileNotFoundException(
-					"An error occur loading the ontologies");
-		}
+			String location = GraphEd.instalationPath + "/OntologieForSaveToRDF.owl";
+			model = ModelFactory.createOntologyModel();
+			InputStream inSCORDCInstance = FileManager.get().open(location);
+			model.read(inSCORDCInstance, nameSpace);
+			if (model.isEmpty()) {
+				throw new FileNotFoundException(
+						"An error occur loading the ontologies");
+			}
 		}
 		catch (Exception e) {
 			throw new Exception("An error occur creating the model");
@@ -57,14 +57,14 @@ public class SaveProblemToRDFFile {
 	}
 
 	/**
-	 * get all triples in the graph and store them in a ArrayList for save them
+	 * Get all triples in the graph and store them in a ArrayList for save them
 	 * lather in a RDF file. before calls this method the graph was to be
 	 * analyzed for check if it have a cyclic connection or an invalid
 	 * connection between all the nodes and it have to be saved previously in
 	 * the dataBase
 	 */
 	public void getTriplesFromGraph() throws Exception{
-	   // try{
+		// try{
 		if (graph instanceof ProblemGraph) {
 			// getting the problem's name
 			String name = ((ProblemGraph) graph).getSavedName();
@@ -74,13 +74,13 @@ public class SaveProblemToRDFFile {
 			for (Object object : edges) {
 				GraphModel gm = graph.getModel();
 				MyProblemCustomCell subjectCell = (MyProblemCustomCell) gm
-				.getParent(gm.getSource((DefaultEdge)object));
-	            MyProblemCustomCell objectCell = (MyProblemCustomCell) gm
-	            .getParent(gm.getTarget((DefaultEdge)object));
-				String subjectt = subjectCell.toString() + "--"
-						+ subjectCell.getProcess();
-				String objectt = objectCell.toString() + "--"
-						+ objectCell.getProcess();
+						.getParent(gm.getSource((DefaultEdge)object));
+				MyProblemCustomCell objectCell = (MyProblemCustomCell) gm
+						.getParent(gm.getTarget((DefaultEdge)object));
+				//@todo include also the process at which belongs the indicator
+				String subjectt = subjectCell.toString();
+				String objectt = objectCell.toString();
+				
 				// getting the points of each node
 				int obj_x, obj_y, sub_x, sub_y;
 				AttributeMap mapSource = ((DefaultGraphCell) subjectCell)
@@ -95,8 +95,7 @@ public class SaveProblemToRDFFile {
 				obj_y = (int) GraphConstants.getBounds(mapTarget).getY();
 
 				// adding triples
-				triplesToInsert
-						.add(new Triplex(subjectt, "isCauseOf", objectt));
+				triplesToInsert.add(new Triplex(subjectt, "isCauseOf", objectt));
 				triplesToInsert.add(new Triplex(subjectt, "hasPosition", sub_x
 						+ "," + sub_y));
 				triplesToInsert.add(new Triplex(objectt, "hasPosition", obj_x
@@ -118,16 +117,16 @@ public class SaveProblemToRDFFile {
 	 */
 	public void addDataFromTriples() throws Exception {
 		try{
-		// Create resources
-		for (Triplex triplex : triplesToInsert) {
-			Resource resource = model.createResource(nameSpace
-					+ triplex.getSubject());
-			Property prop = model.createProperty(nameSpace
-					+ triplex.getProperty());
-			Resource obj = model
-					.createResource(nameSpace + triplex.getObject());
-			model.add(resource, prop, obj);
-		}
+			// Create resources
+			for (Triplex triplex : triplesToInsert) {
+				Resource resource = model.createResource(nameSpace
+						+ triplex.getSubject());
+				Property prop = model.createProperty(nameSpace
+						+ triplex.getProperty());
+				Resource obj = model
+						.createResource(nameSpace + triplex.getObject());
+				model.add(resource, prop, obj);
+			}
 		}
 		catch (Exception e) {
 			throw new Exception("An error occur introducing the triples in the model");
@@ -137,18 +136,18 @@ public class SaveProblemToRDFFile {
 	/**
 	 * Export the model in a file in the URL specified, the most used format are
 	 * "RDF/XML", "Turtle" and "N-Triples"
-	 * 
 	 * @param format
-	 * @throws Exception if the URL is't a correct path
+	 * @throws Exception if the URL isn't a correct path
 	 */
 	public void writeData(String format)throws Exception {
+		System.out.println(URL);
 		try{
-		FileOutputStream scor = new FileOutputStream(URL);
-		model.write(scor, format);
-		scor.close();
+			FileOutputStream scor = new FileOutputStream(URL);
+			model.write(scor, format);
+			scor.close();
 		}
 		catch (Exception e) {
-			throw new Exception("An error occur exporting the model");
+			throw new Exception("An error occur exporting the model " + e.getMessage());
 		}
 	}
 
